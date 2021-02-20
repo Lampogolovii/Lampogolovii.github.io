@@ -114,15 +114,16 @@
 		background-image: url("splash_1.png");
 	}
 
-	#yandex_rtb {
-	  position: absolute; 
-	  display: none;
-	}
-
 	</style>
 </head>
 
 <body>
+	
+	<div id="app-container" class="canvas-app-container">
+		<canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="600" height="1067"></canvas>
+		<div class="buttons-background">
+		</div>
+	</div>
 
 	<!-- -->
 	<script id='engine-loader' type='text/javascript' src="dmloader.js"></script>

@@ -114,51 +114,16 @@
 		background-size: 100%;
   background-image: url("splash_1.png");	}
 
-	#yandex_rtb {
-	  position: absolute; 
-	  display: none;
-	}
-
 	</style>
 </head>
 
 <body>
 		
-	<div id="yandex_rtb"></div>
-	
 	<div id="app-container" class="canvas-app-container">
 		<canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="600" height="1067"></canvas>
 		<div class="buttons-background">
 		</div>
 	</div>
-
-
-<!-- Yandex.RTB R-A-667053-2 -->
-<script type="text/javascript">
-		var yandex_banner_block_id = "R-A-667053-2";
-		var yandex_banner_container = "yandex_rtb";
-    (function(w, d, n, s, t) {
-        w[n] = w[n] || [];
-        w[n].push(function() {
-            Ya.Context.AdvManager.render({
-                blockId: yandex_banner_block_id,
-                renderTo: yandex_banner_container,
-                async: true,
-		onRender: function (data) {
-		    console.log("Rendered:");
-                    console.log(data);
-                }
-            });
-        });
-        t = d.getElementsByTagName("script")[0];
-        s = d.createElement("script");
-        s.type = "text/javascript";
-        s.src = "//an.yandex.ru/system/context.js";
-        s.async = true;
-        t.parentNode.insertBefore(s, t);
-    })(this, this.document, "yandexContextAsyncCallbacks");
-</script>
-
 
 	<!-- -->
 	<script id='engine-loader' type='text/javascript' src="dmloader.js"></script>
@@ -232,15 +197,6 @@
 		app_container.style.height = height + buttonHeight + "px";
 		game_canvas.width = width;
 		game_canvas.height = height;
-
-		var yandex_banner = document.getElementById(yandex_banner_container);
-		var banner_width = 320
-		var banner_height = 50
-		console.log("banner:");
-		console.log(innerWidth);
-		console.log(innerHeight);
-		yandex_banner.style.marginLeft = (innerWidth - banner_width)/2 + "px";
-		yandex_banner.style.marginTop = innerHeight - banner_height + "px";
 	}
 	resize_game_canvas();
 	window.addEventListener('resize', resize_game_canvas, false);
@@ -257,13 +213,12 @@
 		document.head.appendChild(engineJS);
 	}
 	</script>
+
 	<script id='engine-start' type='text/javascript'>
 		EngineLoader.load("canvas", "vkdunkShot");
 	</script>
 
-	<!-- Yandex Games SDK -->
-	<script src="https://yandex.ru/games/sdk/v2"></script>
-
+<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 
 </body>
 </html>

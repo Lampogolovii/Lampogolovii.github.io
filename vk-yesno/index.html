@@ -1,14 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=no">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-	<title>vk-yesno 1.0</title>
-	<style type='text/css'>
+ <head> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=no"> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags --> 
+  <title>vk-yesno 1.0</title> 
+  <style type="text/css">
 	/* Disable user selection to avoid strange bug in Chrome on Windows:
 	* Selecting a text outside the canvas, then clicking+draging would
 	* drag the selected text but block mouse down/up events to the engine.
@@ -114,21 +113,53 @@
 		background-image: url("splash_1.png");
 	}
 
-	</style>
-</head>
+	</style> 
+  <script type="text/javascript">
+            (function (d) {
+                window.YaGamesPrivate_MsgQueue = [];
+                var send = function (cb_id, message_id, message) {
+                    if (typeof YaGamesPrivate !== "undefined") {
+                        YaGamesPrivate.send(cb_id, message_id, message);
+                    } else {
+                        YaGamesPrivate_MsgQueue.push([cb_id, message_id, message]);
+                    }
+                };
 
-<body>
-	
-	<div id="app-container" class="canvas-app-container">
-		<canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="600" height="1067"></canvas>
-		<div class="buttons-background">
-		</div>
-	</div>
+                var t = d.getElementsByTagName("script")[0];
+                var s = d.createElement("script");
+                s.src = "https://yandex.ru/games/sdk/v2";
+                s.async = true;
+                t.parentNode.insertBefore(s, t);
+                s.onload = function () {
+                    var options;
+                    // 
 
-	<!-- -->
-	<script id='engine-loader' type='text/javascript' src="dmloader.js"></script>
-	<!-- -->
-	<script id='engine-setup' type='text/javascript'>
+                    YaGames.init(options)
+                        .then(function (ysdk) {
+                            // 
+
+                            send(0, "init", ysdk);
+                        })
+                        .catch(function (err) {
+                            send(0, "error", err + "");
+                        });
+                };
+                s.onerror = function () {
+                    send(0, "error", "Error loading SDK. Reload the page.");
+                };
+            })(document);
+        </script>
+ </head> 
+ <body> 
+  <div id="app-container" class="canvas-app-container"> 
+   <canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="600" height="1067"></canvas> 
+   <div class="buttons-background"> 
+   </div> 
+  </div> 
+  <!-- --> 
+  <script id="engine-loader" type="text/javascript" src="dmloader.js"></script> 
+  <!-- --> 
+  <script id="engine-setup" type="text/javascript">
 	var extra_params = {
 		archive_location_filter: function( path ) {
 			return ("archive" + path + "");
@@ -206,13 +237,10 @@
 		}
 		document.head.appendChild(engineJS);
 	}
-	</script>
-
-	<script id='engine-start' type='text/javascript'>
+	</script> 
+  <script id="engine-start" type="text/javascript">
 		EngineLoader.load("canvas", "vkyesno");
-	</script>
-
-<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-
-</body>
+	</script> 
+  <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>   
+ </body>
 </html>

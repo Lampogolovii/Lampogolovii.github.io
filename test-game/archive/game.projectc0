@@ -1,5 +1,5 @@
 [project]
-title = vk-yesno
+title = vk-tutor
 version = 1.0
 write_log = 0
 compress_archive = 1
@@ -7,9 +7,9 @@ publisher = unnamed
 developer = unnamed
 
 [display]
-width = 600
-height = 1067
-high_dpi = 1
+width = 960
+height = 640
+high_dpi = 0
 samples = 0
 fullscreen = 0
 update_frequency = 0
@@ -42,8 +42,8 @@ ray_cast_limit_3d = 128
 trigger_overlap_capacity = 16
 
 [bootstrap]
-main_collection = /main/main.collectionc
-render = /main/Render/default.renderc
+main_collection = /main/demo-1/demo-1.collectionc
+render = /builtins/render/default.renderc
 
 [graphics]
 default_texture_min_filter = linear
@@ -141,13 +141,12 @@ localizations = en
 [html5]
 custom_heap_size = 0
 heap_size = 256
-htmlfile = /main/html5/engine_template.html
+htmlfile = /main/vk/vk_template.html
 cssfile = /builtins/manifests/web/light_theme.css
 archive_location_prefix = archive
-show_fullscreen_button = 0
-show_made_with_defold = 0
-scale_mode = fit
-splash_image = /main/html5/splash_1.png
+show_fullscreen_button = 1
+show_made_with_defold = 1
+scale_mode = downscale_fit
 
 [particle_fx]
 max_count = 64
@@ -183,7 +182,4 @@ max_tile_count = 2048
 
 [engine]
 run_while_iconified = 0
-
-[native_extension]
-app_manifest = /main/html5/generated.appmanifest
 
